@@ -19,7 +19,7 @@ ENV MR_TIMEZONE Australia/Sydney
 
 # Install base packages for MR
 RUN apt-get update && \
-	apt-get -y install && \
+	apt-get -y install \
 	nginx \
 	curl \
 	git \
