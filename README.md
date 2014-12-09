@@ -21,7 +21,14 @@ Several options, such as the timezone and admin password are customizable using 
 * ``MR_SITENAME``: Customise the site name for Munki Report.
 * ``MR_TIMEZONE``: Customise the timezone, default is Australia/Sydney
 
-If you require more advanced settings, modify the config.php as your needs suit`
+# Munki Report Login
+
+The default user and password to log in to Munki Report is:
+
+Username: root
+Password: root
+
+If you require more advanced settings, modify the config.php as per your needs
 
 # Running the container
 
