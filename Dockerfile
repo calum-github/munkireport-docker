@@ -42,7 +42,7 @@ RUN mkdir -p /www/munkireport && \
 
 # Add our config.php file and nginx configs
 ADD config.php /munki_report/config.php
-ADD munki-report.conf /etc/nginx/sites-enabled
+ADD munki-report.conf /etc/nginx/sites-enabled/munki-report.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 
 # Set up logs to output to stout and stderr
