@@ -35,6 +35,6 @@ If you require more advanced settings, modify the config.php as per your needs
 Running the container is quite simple.
 
 ```bash
-$ docker run -d -p 80:80 -e DB_NAME=munkireport -e DB_USER=admin -e DB_PASS=admin -e DB_SERVER=mysql.test.internal -e MR_SITENAME=MunkiReport-MyCompany -e MR_TIMEZONE=Australia/Sydney hunty1/munki-report-docker
+$ docker run -d -p 80:80 -e DB_NAME=munkireport -e DB_USER=admin -e DB_PASS=admin -e DB_SERVER=mysql.test.internal -e MR_SITENAME=MunkiReport-MyCompany -e MR_TIMEZONE=Australia/Sydney --name munkireport_webapp hunty1/munkireport-docker
 ```
 
