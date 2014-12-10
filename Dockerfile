@@ -41,7 +41,7 @@ RUN mkdir -p /www/munkireport && \
 	sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini
 
 # Add our config.php file and nginx configs
-ADD config.php /munki_report/config.php
+ADD config.php /www/munkireport/config.php
 ADD munki-report.conf /etc/nginx/sites-enabled/munki-report.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 
@@ -56,4 +56,5 @@ RUN chmod +x /start.sh
 # Expose Ports
 EXPOSE 80 443
 
-# CMD ["/start.sh"]
+# Run our startup script
+CMD ["/start.sh"]
