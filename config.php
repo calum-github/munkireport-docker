@@ -66,16 +66,29 @@
 	| Specify dsn, username, password and options
 	| Supported engines: sqlite and mysql
 	| Mysql example:
-	| 	$conf['pdo_dsn'] = 'mysql:host=localhost;dbname=munkireport';
-	| 	$conf['pdo_user'] = 'munki';
-	| 	$conf['pdo_pass'] = 'munki';
-	| 	$conf['pdo_opts'] = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 	|
 	*/
 	$conf['pdo_dsn'] = 'mysql:host=sql.test.internal;dbname=munkireport';
 	$conf['pdo_user'] = 'admin';
 	$conf['pdo_pass'] = 'admin';
 	$conf['pdo_opts'] = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
+	
+	/*
+	|===============================================
+	| Proxy settings
+	|===============================================
+	|
+	| If you are behind a proxy, MunkiReport may be unable to
+	| retrieve warranty and model information from Apple.
+	|
+	| Note that there is only authenticated proxy support for
+	| basic authentication
+	|
+	*/
+    //$conf['proxy']['server'] = 'proxy.yoursite.org'; // Required
+	//$conf['proxy']['username'] = 'proxyuser'; // Optional
+	//$conf['proxy']['password'] = 'proxypassword'; Optional
+	//$conf['proxy']['port'] = 8080; // Optional, defaults to 8080
 
 	/*
 	|===============================================

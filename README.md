@@ -21,6 +21,25 @@ Several options, such as the timezone and admin password are customizable using 
 * ``MR_SITENAME``: Customise the site name for Munki Report.
 * ``MR_TIMEZONE``: Customise the timezone, default is Australia/Sydney
 
+Munki Report is able to perform warranty lookups, however if your Munki Report server is behind a proxy this may fail.
+To avoid this, we can provide proxy server information as variables when starting the container or providing defaults
+in the Dockerfile when building the container.
+
+There are two methods of setting the proxy server:
+
+Mode 1
+This sets just the proxy server address and port number
+
+Mode 2
+This sets the proxy server address, port number and a username and password to use if the proxy server is an authenticated proxy
+
+* ``proxy_required``: Set this to mod1 or mod2 depending upon which type of proxy server config you need. If no proxy set to no
+* ``proxy_server``: Set this to your proxy server address in the format proxy.example.com
+* ``proxy_port``: Set this to your proxy server port number
+* ``proxy_user``: Set this to your proxy username if you need to use an authenticated proxy server
+* ``proxy_password``: Set this to your proxy password if you need to use an authenticated proxy server
+
+
 # Munki Report Login
 
 The default user and password to log in to Munki Report is:
@@ -38,3 +57,5 @@ Running the container is quite simple.
 $ docker run -d -p 80:80 -e DB_NAME=munkireport -e DB_USER=admin -e DB_PASS=admin -e DB_SERVER=mysql.test.internal -e MR_SITENAME=MunkiReport-MyCompany -e MR_TIMEZONE=Australia/Sydney --name munkireport_webapp hunty1/munkireport-docker
 ```
 
+If you need proxy server support, either bake them into your Dockerfile, or provide them as environmentals when starting your container
+by passing them with the -e flag, just like the variables shown above for the DB serttings.

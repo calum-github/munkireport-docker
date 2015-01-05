@@ -9,13 +9,21 @@ MAINTAINER Calum Hunter <calum.h@gmail.com>
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
 
-# Set Env variables for connecting to a MySQL Database
+# Set Env variables for Munki Report Config
 ENV DB_NAME munkireport
 ENV DB_USER admin
 ENV DB_PASS password
 ENV DB_SERVER sql.test.internal
 ENV MR_SITENAME MunkiReport
 ENV MR_TIMEZONE Australia/Sydney
+
+# Define proxy setting variables for Munki report
+# set this to mod1, mod2 or no depending upon your proxy server needs. See the Readme for more info.
+ENV proxy_required no
+ENV proxy_server proxy.example.com
+ENV proxy_uname proxyuser
+ENV proxy_pword proxypassword
+ENV proxy_port 8080
 
 # Install base packages for MR
 RUN apt-get update && \
