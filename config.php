@@ -56,7 +56,7 @@
 	| config.php!. You can combine methods 2, 3 and 4
 	|
 	*/
-	$conf['auth']['auth_noauth'] = array();
+	$auth_config['root'] = '$P$BUqxGuzR2VfbSvOtjxlwsHTLIMTmuw0'; // Password is root
 	
 	/*
 	|===============================================
