@@ -36,8 +36,8 @@ This sets the proxy server address, port number and a username and password to u
 * ``proxy_required``: Set this to mod1 or mod2 depending upon which type of proxy server config you need. If no proxy set to no
 * ``proxy_server``: Set this to your proxy server address in the format proxy.example.com
 * ``proxy_port``: Set this to your proxy server port number
-* ``proxy_user``: Set this to your proxy username if you need to use an authenticated proxy server
-* ``proxy_password``: Set this to your proxy password if you need to use an authenticated proxy server
+* ``proxy_uname``: Set this to your proxy username if you need to use an authenticated proxy server
+* ``proxy_pword``: Set this to your proxy password if you need to use an authenticated proxy server
 
 
 # Munki Report Login
