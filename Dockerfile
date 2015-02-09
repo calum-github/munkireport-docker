@@ -3,6 +3,8 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
+# Version 0.2 - 10-02-2015
+
 FROM ubuntu:latest
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
