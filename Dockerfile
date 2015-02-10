@@ -4,6 +4,7 @@
 # simply provide the db name, username, password and server address
 
 # Version 0.2 - 10-02-2015
+# MR-PHP Version 2.2.0 (Februari 8, 2015)
 
 FROM ubuntu:latest
 MAINTAINER Calum Hunter <calum.h@gmail.com>
