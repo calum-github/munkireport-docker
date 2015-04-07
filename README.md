@@ -7,7 +7,7 @@ The container is expects the details of a MySQL database to be passed to it via 
 The Docker image is built on Ubuntu 14
 It uses Nginx and php5-fpm
 
-MunkiReport PHP version is 2.2.0 (February 8, 2015)
+MunkiReport PHP version is 2.3.0 (March 11, 2015)
 
 
 # Settings
