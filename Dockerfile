@@ -3,8 +3,8 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 0.3 - 07-04-2015
-# MR-PHP Version 2.3.0 (March 11, 2015)
+# Version 0.5 - 01-06-2015
+# MR-PHP Version 2.4.2 (April 25, 2015)
 
 FROM ubuntu:latest
 MAINTAINER Calum Hunter <calum.h@gmail.com>
@@ -32,6 +32,7 @@ ENV proxy_port 8080
 RUN apt-get update && \
 	apt-get -y install \
 	nginx \
+	nano \
 	curl \
 	git \
 	php5-fpm \
