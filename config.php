@@ -5,6 +5,7 @@
 	$conf['vnc_link'] = "vnc://%s:5900";
 	$conf['ssh_link'] = "ssh://adminuser@%s";
 	$conf['allow_migrations'] = TRUE;
+	$conf['apps_to_track'] = array('Firefox','Java','Flash Player');
 	
 	/*
 	|===============================================
