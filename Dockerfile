@@ -4,7 +4,7 @@
 # simply provide the db name, username, password and server address
 
 # Version 0.6 - 10-06-2015
-# MR-PHP Version 2.4.3 (June 2, 2015)
+# MR-PHP Version WIP BRANCH (June 24, 2015)
 
 FROM ubuntu:latest
 MAINTAINER Calum Hunter <calum.h@gmail.com>
@@ -46,7 +46,7 @@ RUN apt-get update && \
 # Add line to php config to prevent blank page
 # Fix PHP CGI pathinfo
 RUN mkdir -p /www/munkireport && \
-	git clone https://github.com/munkireport/munkireport-php /www/munkireport && \
+	git clone -b wip --single-branch https://github.com/munkireport/munkireport-php /www/munkireport && \
 	mkdir -p /etc/nginx/sites-enabled/ && \
 	rm -rf /etc/nginx/sites-enabled/* && \
 	rm -rf /etc/nginx/nginx.conf && \
