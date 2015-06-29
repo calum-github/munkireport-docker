@@ -3,7 +3,7 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 0.6 - 10-06-2015
+# Version 0.6 - 10-06-2015 
 # MR-PHP Version WIP BRANCH (June 24, 2015)
 
 FROM ubuntu:latest
