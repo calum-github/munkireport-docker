@@ -4,7 +4,8 @@ Munki Report PHP in a Container
 This Docker image runs [MunkiReport PHP](https://github.com/munkireport/munkireport-php).
 The container is expects the details of a MySQL database to be passed to it via environmental arguments
 
-The Docker image is built on Ubuntu 14
+The Docker image is built on Ubuntu:latest
+
 It uses Nginx and php5-fpm
 
 * Branches / versions
@@ -15,6 +16,9 @@ MunkiReport PHP version 2.3.0 (March 11, 2015) - Tag 2.3.0
 
 
 MunkiReport PHP version 2.4.3 (June 2, 2015) - Tag 2.4.3
+
+MunkiReport PHP version 2.5.1(Pre-Release) (July 15, 2015) - Tag 2.5.1PR
+
 
 
 # Settings
