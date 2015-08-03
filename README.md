@@ -14,10 +14,9 @@ There are multiple branches for each version, ensure you check out the tags for 
 
 MunkiReport PHP version 2.3.0 (March 11, 2015) - Tag 2.3.0
 
-
 MunkiReport PHP version 2.4.3 (June 2, 2015) - Tag 2.4.3
 
-MunkiReport PHP version 2.5.1(Pre-Release) (July 15, 2015) - Tag 2.5.1PR
+MunkiReport PHP version 2.5.3 (July 31, 2015) - Tag 2.5.3
 
 
 
