@@ -3,14 +3,19 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 0.6 - 10-06-2015
+# Version 0.7 - 04-08-2015
 # MR-PHP Version 2.4.3 (June 2, 2015)
 
-FROM ubuntu:latest
+FROM debian:jessie
 MAINTAINER Calum Hunter <calum.h@gmail.com>
+
+# The version of Munki report to download
+ENV MR_VERS v2.4.3.tar.gz
 
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
+ENV TZ Australia/Sydney
 
 # Set Env variables for Munki Report Config
 ENV DB_NAME munkireport
@@ -34,7 +39,6 @@ RUN apt-get update && \
 	nginx \
 	nano \
 	curl \
-	git \
 	php5-fpm \
 	php5-mysql \
 	php5-ldap && \
@@ -46,11 +50,15 @@ RUN apt-get update && \
 # Add line to php config to prevent blank page
 # Fix PHP CGI pathinfo
 RUN mkdir -p /www/munkireport && \
-	git clone https://github.com/munkireport/munkireport-php /www/munkireport && \
 	mkdir -p /etc/nginx/sites-enabled/ && \
 	rm -rf /etc/nginx/sites-enabled/* && \
 	rm -rf /etc/nginx/nginx.conf && \
 	sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini
+
+# Grab our Munki Report Release defined in MR_VERS from Github, unpack it and remove the tarball
+ADD https://github.com/munkireport/munkireport-php/archive/$MR_VERS /www/munkireport/$MR_VERS
+RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport && \
+	rm /www/munkireport/$MR_VERS
 
 # Add our config.php file and nginx configs
 ADD config.php /www/munkireport/config.php
