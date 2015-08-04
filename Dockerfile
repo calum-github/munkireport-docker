@@ -3,14 +3,17 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 0.6 - 10-06-2015
+# Version 0.7 - 04-08-2015
 # MR-PHP Version 2.5.3 (July 31, 2015)
 
-FROM ubuntu:latest
+FROM debian:jessie
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
+
+# The version of Munki report to download
+# Master Branch
 
 # Set Env variables for Munki Report Config
 ENV DB_NAME munkireport
