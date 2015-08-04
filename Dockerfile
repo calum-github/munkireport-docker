@@ -7,6 +7,7 @@
 # MR-PHP Version 2.5.3 (July 31, 2015)
 
 FROM debian:jessie
+
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
 # The version of Munki report to download
@@ -14,6 +15,8 @@ ENV MR_VERS v2.5.3.tar.gz
 
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
+ENV TERM xterm
+ENV TZ Australia/Sydney
 
 # Set Env variables for Munki Report Config
 ENV DB_NAME munkireport
