@@ -1,11 +1,11 @@
 <?php if ( ! defined( 'KISS' ) ) exit;
 
-	$conf['index_page'] = 'index.php?';
-	$conf['sitename'] = 'MunkiReport';
-	$conf['vnc_link'] = "vnc://%s:5900";
-	$conf['ssh_link'] = "ssh://adminuser@%s";
-	$conf['allow_migrations'] = TRUE;
-	$conf['apps_to_track'] = array('Firefox','Java','Flash Player');
+$conf['index_page'] = 'index.php?';
+$conf['sitename'] = 'MunkiReport';
+$conf['vnc_link'] = "vnc://%s:5900";
+$conf['ssh_link'] = "ssh://adminuser@%s";
+$conf['allow_migrations'] = TRUE;
+$conf['apps_to_track'] = array('Firefox','Java','Flash Player');
 	
 	/*
 	|===============================================
@@ -57,8 +57,117 @@
 	| config.php!. You can combine methods 2, 3 and 4
 	|
 	*/
-	$auth_config['root'] = '$P$BUqxGuzR2VfbSvOtjxlwsHTLIMTmuw0'; // Password is root
+$auth_config['root'] = '$P$BUqxGuzR2VfbSvOtjxlwsHTLIMTmuw0'; // Password is root
 	
+	/*
+	|===============================================
+	| Role Based Authorization
+	|===============================================
+	|
+	| Authorize actions by listing roles appropriate array.
+	| Don't change these unless you know what you're doing, these roles are
+	| also used by the Business Units
+	|
+	*/
+$conf['authorization']['delete_machine'] = array('admin', 'manager');
+$conf['authorization']['global'] = array('admin');
+
+    /*
+	|===============================================
+	| Roles
+	|===============================================
+	|
+	| Add users or groups to the appropriate roles array.
+	|
+	*/
+$conf['roles']['admin'] = array('*');
+
+	/*
+	|===============================================
+	| Local groups
+	|===============================================
+	|
+	| Create local groups, add users to groups.
+	|
+	*/
+	//$conf['groups']['admin_users'] = array();
+
+	/*
+	|===============================================
+	| Business Units
+	|===============================================
+	|
+	| Set to TRUE to enable Business Units
+	| For more information, see docs/business_units.md
+	|
+	*/
+$conf['enable_business_units'] = FALSE;
+
+	/*
+	|===============================================
+	| Force secure connection when authenticating
+	|===============================================
+	|
+	| Set this value to TRUE to force https when logging in.
+	| This is useful for sites that serve MR both via http and https
+	|
+	*/
+$conf['auth_secure'] = FALSE;
+
+	/*
+	|===============================================
+	| Inventory - bundle ignore list
+	|===============================================
+	|
+	| List of bundle-id's to be ignored when processing inventory
+	| The list is processed using regex, examples:
+	|
+	| Skip  all virtual windows apps created by parallels and VMware
+	| $conf['bundleid_ignorelist'][] = array('com.parallels.winapp.*', 'com.vmware.proxyApp.*');
+	|
+	| Skip all Apple apps, except iLife, iWork and Server
+	| 'com.apple.(?!iPhoto)(?!iWork)(?!Aperture)(?!iDVD)(?!garageband)(?!iMovieApp)(?!Server).*'
+	|
+	| Skip all apps with empty bundle-id's
+	| '^$'
+	|
+	*/
+$conf['bundleid_ignorelist'][] = 'com.parallels.winapp.*';
+$conf['bundleid_ignorelist'][] = 'com.vmware.proxyApp.*';
+
+	/*
+	|===============================================
+	| Inventory - path ignore list
+	|===============================================
+	|
+	| List of bundle-paths to be ignored when processing inventory
+	| The list is processed using regex, examples:
+	|
+	| Skip all apps in /System/Library
+	| $conf['bundlepath_ignorelist'][] = '/System/Library/.*';
+	|
+	| Skip all apps that are contained in an app bundle
+	| $conf['bundlepath_ignorelist'][] = '.*\.app\/.*\.app'
+	|
+	*/
+$conf['bundlepath_ignorelist'] = array('/System/Library/.*');
+
+	/*
+	|===============================================
+	| Modules
+	|===============================================
+	|
+	| List of modules that have to be installed on the client
+	| See for possible values the names of the directories
+	| in app/modules/
+	| e.g. $conf['modules'] = array('disk_report', 'inventory');
+	|
+	| An empty list installs only the basic reporting modules:
+	| Machine and Reportdata
+	|
+	*/
+$conf['modules'] = array('munkireport');
+
 	/*
 	|===============================================
 	| PDO Datasource
@@ -69,10 +178,10 @@
 	| Mysql example:
 	|
 	*/
-	$conf['pdo_dsn'] = 'mysql:host=sql.test.internal;dbname=munkireport';
-	$conf['pdo_user'] = 'admin';
-	$conf['pdo_pass'] = 'admin';
-	$conf['pdo_opts'] = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
+$conf['pdo_dsn'] = 'mysql:host=sql.test.internal;dbname=munkireport';
+$conf['pdo_user'] = 'admin';
+$conf['pdo_pass'] = 'admin';
+$conf['pdo_opts'] = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 	
 	/*
 	|===============================================
@@ -93,13 +202,25 @@
 
 	/*
 	|===============================================
+	| Request timeout
+	|===============================================
+	|
+	| Timeout for retrieving warranty and model information from Apple.
+	|
+	| Timeout in seconds
+	|
+	*/
+$conf['request_timeout'] = 5;
+
+	/*
+	|===============================================
 	| Create table options
 	|===============================================
 	|
 	| For MySQL, define the default table and charset
 	|
 	*/
-	$conf['mysql_create_tbl_opts'] = 'ENGINE=InnoDB DEFAULT CHARSET=utf8';
+$conf['mysql_create_tbl_opts'] = 'ENGINE=InnoDB DEFAULT CHARSET=utf8';
 
 	/*
 	|===============================================
@@ -109,6 +230,6 @@
 	| See http://www.php.net/manual/en/timezones.php for valid values
 	|
 	*/
-	$conf['timezone'] = @date_default_timezone_get(Australia/Sydney);
+$conf['timezone'] = @date_default_timezone_get(Australia/Sydney);
 
-	$conf['debug'] = TRUE;
+$conf['debug'] = FALSE;
