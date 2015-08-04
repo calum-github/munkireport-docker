@@ -52,11 +52,10 @@ RUN mkdir -p /www/munkireport && \
 	rm -rf /etc/nginx/nginx.conf && \
 	sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini
 
-# Grab our Munki Report Release from Github, unpack it and remove the tarball
-ADD https://github.com/munkireport/munkireport-php/archive/v2.5.3.tar.gz /www/munkireport/v2.5.3.tar.gz
-
-RUN tar -zxvf /www/munkireport/v2.5.3.tar.gz --strip-components=1 && \
-	rm /www/munkireport/v2.5.3.tar.gz
+# Grab our Munki Report Release defined in MR_VERS from Github, unpack it and remove the tarball
+ADD https://github.com/munkireport/munkireport-php/archive/$MR_VERS /www/munkireport/$MR_VERS
+RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport/$MR_VERS && \
+	rm /www/munkireport/$MR_VERS
 
 # Add our config.php file and nginx configs
 ADD config.php /www/munkireport/config.php
