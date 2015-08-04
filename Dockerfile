@@ -44,8 +44,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 # Make folder for enabled sites in nginx
-# Add line to php config to prevent blank page
-# Fix PHP CGI pathinfo
+# Add line to php config to prevent blank page, fix PHP CGI pathinfo
 RUN mkdir -p /www/munkireport && \
 	mkdir -p /etc/nginx/sites-enabled/ && \
 	rm -rf /etc/nginx/sites-enabled/* && \
