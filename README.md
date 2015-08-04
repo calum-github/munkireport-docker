@@ -4,11 +4,11 @@ Munki Report PHP in a Container
 This Docker image runs [MunkiReport PHP](https://github.com/munkireport/munkireport-php).
 The container is expects the details of a MySQL database to be passed to it via environmental arguments
 
-The Docker image is built on Ubuntu:latest
+The Docker image is built on Debian:Jessie
 
 It uses Nginx and php5-fpm
 
-* Branches / versions
+* Versions
 
 There are multiple branches for each version, ensure you check out the tags for each branch.
 
@@ -18,7 +18,7 @@ MunkiReport PHP version 2.4.3 (June 2, 2015) - Tag 2.4.3
 
 MunkiReport PHP version 2.5.3 (July 31, 2015) - Tag 2.5.3
 
-WIP and Master Branches
+* WIP and Master Branches
 
 There are also tags for wip and latest, these correspond to the WIP and Master branch of MunkiReport's Github.
 These are current as of August 04, 2015 but may be subject to change at any time. For specific versions, make sure you
@@ -59,8 +59,8 @@ This sets the proxy server address, port number and a username and password to u
 
 The default user and password to log in to Munki Report is:
 
-Username: root
-Password: root
+Username: ``root``
+Password: ``root``
 
 If you require more advanced settings, modify the config.php as per your needs
 
