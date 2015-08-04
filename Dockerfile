@@ -53,7 +53,7 @@ RUN mkdir -p /www/munkireport && \
 
 # Grab our Munki Report Release defined in MR_VERS from Github, unpack it and remove the tarball
 ADD https://github.com/munkireport/munkireport-php/archive/$MR_VERS /www/munkireport/$MR_VERS
-RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport/$MR_VERS && \
+RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport && \
 	rm /www/munkireport/$MR_VERS
 
 # Add our config.php file and nginx configs
