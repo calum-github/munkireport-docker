@@ -18,6 +18,8 @@ MunkiReport PHP version 2.4.3 (June 2, 2015) - Tag 2.4.3
 
 MunkiReport PHP version 2.5.3 (July 31, 2015) - Tag 2.5.3
 
+MunkiReport PHP version 2.6.0 (October 20, 2015) - Tag 2.6.0
+
 
 
 # Settings
