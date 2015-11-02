@@ -3,18 +3,9 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-<<<<<<< HEAD
-# Version 0.7 - 04-08-2015
-# MR-PHP Version 2.5.3 (July 31, 2015)
-
-FROM debian:jessie
-=======
 # Version 0.8 - 02-11-2015
 # MR-PHP Version 2.6.0 (October 20, 2015)
 
-FROM debian:jessie
-
->>>>>>> 2.6.0
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
 # The version of Munki report to download

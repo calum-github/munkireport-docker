@@ -18,16 +18,7 @@ MunkiReport PHP version 2.4.3 (June 2, 2015) - Tag 2.4.3
 
 MunkiReport PHP version 2.5.3 (July 31, 2015) - Tag 2.5.3
 
-<<<<<<< HEAD
-* WIP and Master Branches
-
-There are also tags for wip and latest, these correspond to the WIP and Master branch of MunkiReport's Github.
-These are current as of August 04, 2015 but may be subject to change at any time. For specific versions, make sure you
-choose the correct tag.
-=======
 MunkiReport PHP version 2.6.0 (October 20, 2015) - Tag 2.6.0
-
->>>>>>> 2.6.0
 
 
 # Settings
