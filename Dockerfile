@@ -18,6 +18,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
 ENV TZ Australia/Sydney
 
+# The version of Munki report to download
+# Master Branch
+
 # Set Env variables for Munki Report Config
 ENV DB_NAME munkireport
 ENV DB_USER admin
