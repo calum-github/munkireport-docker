@@ -6,6 +6,8 @@
 # Version 0.8 - 02-11-2015
 # MR-PHP Version 2.6.0 (October 20, 2015)
 
+FROM Debian:jessie
+
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
 # The version of Munki report to download
