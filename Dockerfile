@@ -6,7 +6,7 @@
 # Version 0.8 - 02-11-2015
 # MR-PHP Version 2.6.0 (October 20, 2015)
 
-FROM Debian:jessie
+FROM debian:jessie
 
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
