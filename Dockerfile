@@ -3,15 +3,15 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 0.8 - 02-11-2015
-# MR-PHP Version 2.6.0 (October 20, 2015)
+# Version 0.9 - 08-01-2016
+# MR-PHP Version 2.7.3 (December 16, 2015)
 
 FROM debian:jessie
 
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
 # The version of Munki report to download
-ENV MR_VERS v2.6.0.tar.gz
+ENV MR_VERS v2.7.3.tar.gz
 
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
