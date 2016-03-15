@@ -24,40 +24,34 @@ echo ""
 sed -i "/timezone/c\$conf['timezone'] = @date_default_timezone_get($MR_TIMEZONE);" /www/munkireport/config.php # Set the MR Timezone
 
 # Check to see which type of proxy server config we need
-if [ "$proxy_required" = "mod1" ];
-	then
-# Configure Proxy Settings for Warranty Lookups etc 
-echo "*** Proxy Server Mode 1 (Only server and port number) selected ***"
-echo ""
-echo "*** Setting Proxy server to $proxy_server ***"
-echo ""
-sed -i "/proxy.yoursite.org/c\$conf['proxy']['server'] = '$proxy_server';" /www/munkireport/config.php # Set the proxy server address
-echo "*** Setting Proxy port to $proxy_port ***"
-echo ""
-sed -i "/8080/c\$conf['proxy']['port'] = 8080;" /www/munkireport/config.php # Set the proxy port
-
-elif [ "$proxy_required" = "mod2" ];
-	then
-echo "*** Proxy Server Mode 2 (authenticated proxy) selected ***"
-echo ""
-echo "*** Setting Proxy server to $proxy_server ***"
-echo ""
-sed -i "/proxy.yoursite.org/c\$conf['proxy']['server'] = '$proxy_server';" /www/munkireport/config.php # Set the proxy server address
-echo "*** Setting Proxy port to $proxy_port ***"
-echo ""
-sed -i "/8080/c\$conf['proxy']['port'] = 8080;" /www/munkireport/config.php # Set the proxy port
-echo "*** Setting Proxy username to $proxy_uname ***"
-echo ""
-sed -i "/proxyuser/c\$conf['proxy']['username'] = '$proxy_uname';" /www/munkireport/config.php # set the proxy username
-echo "*** Setting Proxy password to $proxy_pword ***"
-echo ""
-sed -i "/proxypassword/c\$conf['proxy']['password'] = '$proxy_pword';" /www/munkireport/config.php # set the proxy password
-
-elif [ "$proxy_required" = "no" ]; 
-	then
+if [ "$proxy_required" = "mod1" ]; then
+    # Configure Proxy Settings for Warranty Lookups etc 
+    echo "*** Proxy Server Mode 1 (Only server and port number) selected ***"
+    echo ""
+    echo "*** Setting Proxy server to $proxy_server ***"
+    echo ""
+    sed -i "/proxy.yoursite.org/c\$conf['proxy']['server'] = '$proxy_server';" /www/munkireport/config.php # Set the proxy server address
+    echo "*** Setting Proxy port to $proxy_port ***"
+    echo ""
+    sed -i "/8080/c\$conf['proxy']['port'] = 8080;" /www/munkireport/config.php # Set the proxy port
+elif [ "$proxy_required" = "mod2" ]; then
+    echo "*** Proxy Server Mode 2 (authenticated proxy) selected ***"
+    echo ""
+    echo "*** Setting Proxy server to $proxy_server ***"
+    echo ""
+    sed -i "/proxy.yoursite.org/c\$conf['proxy']['server'] = '$proxy_server';" /www/munkireport/config.php # Set the proxy server address
+    echo "*** Setting Proxy port to $proxy_port ***"
+    echo ""
+    sed -i "/8080/c\$conf['proxy']['port'] = 8080;" /www/munkireport/config.php # Set the proxy port
+    echo "*** Setting Proxy username to $proxy_uname ***"
+    echo ""
+    sed -i "/proxyuser/c\$conf['proxy']['username'] = '$proxy_uname';" /www/munkireport/config.php # set the proxy username
+    echo "*** Setting Proxy password to $proxy_pword ***"
+    echo ""
+    sed -i "/proxypassword/c\$conf['proxy']['password'] = '$proxy_pword';" /www/munkireport/config.php # set the proxy password
+elif [ "$proxy_required" = "no" ]; then
 	echo "*** Proxy server settings are not required, skipping ***"
 fi
-
 
 # Fire up PHP and then start Nginx in non daemon mode so docker has something to keep running
 echo ""
