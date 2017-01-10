@@ -3,7 +3,7 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 1.2 - 10-01-2017
+# Version 1.3 - 11-01-2017
 # MR-PHP Version 2.12.0 (December 23, 2016)
 FROM debian:jessie
 
@@ -60,6 +60,7 @@ RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport
 
 # Add our config.php file and nginx configs
 #ADD config.php /www/munkireport/config.php
+RUN cp /www/munkireport/config_default.php /www/munkireport/config.php
 ADD munki-report.conf /etc/nginx/sites-enabled/munki-report.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 
