@@ -58,7 +58,7 @@ echo ""
 echo "*** Configuration of the Munki Report php file complete ***"
 echo ""
 echo "*** Starting php5-fpm ***"
-service php5-fpm restart
+service php7-fpm restart
 echo ""
 echo "*** Starting NginX ***"
 nginx
