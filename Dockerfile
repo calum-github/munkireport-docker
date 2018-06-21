@@ -5,7 +5,7 @@
 
 # Version 1.4 - 21-06-2018
 # MR-PHP Version 3.1.1 (24 March 2018)
-FROM debian:jessie
+FROM debian:stretch
 
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
