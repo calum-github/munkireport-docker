@@ -39,9 +39,9 @@ RUN apt-get update && \
 	nginx \
 	nano \
 	curl \
-	php7-fpm \
-	php7-mysql \
-	php7-ldap && \
+	php7.0-fpm \
+	php7.0-mysql \
+	php7.0-ldap && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
