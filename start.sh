@@ -3,6 +3,8 @@
 # Use the environmental variables passed to the Docker container and use them to:
 
 # Configure the Database Connection
+echo "*** Creating a copy of the config file ***"
+cp /www/munkireport/config_default.php /www/munkireport/config.php
 echo "*** Setting DB Server to $DB_SERVER ***" 
 echo ""
 echo "*** Setting DB Name to $DB_NAME ***"
