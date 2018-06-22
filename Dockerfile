@@ -40,11 +40,18 @@ RUN apt-get update && \
 	nano \
 	curl \
 	vim \
+	git \
+	zip \ 
+	unzip \
+	php7.0 \
+	php7.0-mbstring \
+	php7.0-zip \
 	php7.0-fpm \
 	php7.0-mysql \
 	php7.0-ldap \
 	php7.0-xml \
 	libcurl3-dev && \
+	curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
@@ -60,6 +67,10 @@ RUN mkdir -p /www/munkireport && \
 ADD https://github.com/munkireport/munkireport-php/archive/$MR_VERS /www/munkireport/$MR_VERS
 RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport && \
 	rm /www/munkireport/$MR_VERS
+
+# Install dependencies
+RUN cd /www/munkireport && \
+	/usr/local/bin/composer install --no-plugins --no-scripts
 
 # Add our config.php file and nginx configs
 #ADD config.php /www/munkireport/config.php
