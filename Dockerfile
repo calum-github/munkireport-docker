@@ -39,6 +39,7 @@ RUN apt-get update && \
 	nginx \
 	nano \
 	curl \
+	vim \
 	php7.0-fpm \
 	php7.0-mysql \
 	php7.0-ldap && \
