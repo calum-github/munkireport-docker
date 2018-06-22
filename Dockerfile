@@ -3,8 +3,8 @@
 # in order to send data to an external MySQL database
 # simply provide the db name, username, password and server address
 
-# Version 1.4 - 21-06-2018
-# MR-PHP Version 3.1.1 (24 March 2018)
+# Version 1.4 - 22-06-2018
+# MR-PHP Version 3.1.1 (March 24, 2018)
 FROM debian:stretch
 
 MAINTAINER Calum Hunter <calum.h@gmail.com>
@@ -15,7 +15,7 @@ ENV MR_VERS v3.1.1.tar.gz
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
-ENV TZ Australia/Melbourne
+ENV TZ Australia/Sydney
 
 # Set Env variables for Munki Report Config
 ENV DB_NAME munkireport
@@ -23,7 +23,7 @@ ENV DB_USER admin
 ENV DB_PASS password
 ENV DB_SERVER sql.test.internal
 ENV MR_SITENAME MunkiReport
-ENV MR_TIMEZONE Australia/Melbourne
+ENV MR_TIMEZONE Australia/Sydney
 
 # Define proxy setting variables for Munki report
 # set this to mod1, mod2 or no depending upon your proxy server needs. See the Readme for more info.
@@ -50,25 +50,16 @@ RUN apt-get update && \
 RUN mkdir -p /www/munkireport && \
 	mkdir -p /etc/nginx/sites-enabled/ && \
 	rm -rf /etc/nginx/sites-enabled/* && \
-	rm -rf /etc/nginx/nginx.conf && \
-#	sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini
+	rm -rf /etc/nginx/nginx.conf 
+#&& sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php5/fpm/php.ini
 
 # Grab our Munki Report Release defined in MR_VERS from Github, unpack it and remove the tarball
-
-# Old style - we should not use ADD to get files sa it is bad practice
-#ADD https://github.com/munkireport/munkireport-php/archive/$MR_VERS /www/munkireport/$MR_VERS
-#RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport && \
-#	rm /www/munkireport/$MR_VERS
-
-# New style
-RUN mkdir /www/munkireport/$MR_VERS \
-	&& curl -SL https://github.com/munkireport/munkireport-php/archive/$MR_VERS \ 
-	| tar -xJC /www/munkireport/$MR_VERS \
-	&& rm /www/munkireport/$MR_VERS
+ADD https://github.com/munkireport/munkireport-php/archive/$MR_VERS /www/munkireport/$MR_VERS
+RUN tar -zxvf /www/munkireport/$MR_VERS --strip-components=1 -C /www/munkireport && \
+	rm /www/munkireport/$MR_VERS
 
 # Add our config.php file and nginx configs
 #ADD config.php /www/munkireport/config.php
-RUN cp /www/munkireport/config_default.php /www/munkireport/config.php
 ADD munki-report.conf /etc/nginx/sites-enabled/munki-report.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 
