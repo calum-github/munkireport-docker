@@ -42,7 +42,9 @@ RUN apt-get update && \
 	vim \
 	php7.0-fpm \
 	php7.0-mysql \
-	php7.0-ldap && \
+	php7.0-ldap \
+	php7.0-xml \
+	libcurl3-dev && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
