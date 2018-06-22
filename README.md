@@ -12,6 +12,8 @@ It uses Nginx and php5-fpm
 
 There are multiple branches for each version, ensure you check out the tags for each branch.
 
+- MunkiReport PHP version 3.1.1 (March 24, 2018) - Tag 3.1.1 
+
 - MunkiReport PHP version 2.12.0 (December 23, 2016) - Tag 2.12.0 
 
 - MunkiReport PHP version 2.8.4 (March 15, 2015) - Tag 2.8.4
