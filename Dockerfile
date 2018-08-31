@@ -1,59 +1,70 @@
-# Dockerfile for MunkiReport-PHP
-# This docker image will take environmental variables
-# in order to send data to an external MySQL database
-# simply provide the db name, username, password and server address
+# Dockerfile for MunkiReport-PHP v3
 
-# Version 1.4 - 22-06-2018
-# MR-PHP Version 3.1.1 (March 24, 2018)
+
+# Version 2.0 - 31-08-2018
+# MR-PHP Version 3.2.2 (March 24, 2018)
 FROM debian:stretch
 
 MAINTAINER Calum Hunter <calum.h@gmail.com>
 
 # The version of Munki report to download
-ENV MR_VERS v3.1.1.tar.gz
+ENV MR_VERS v3.2.2.tar.gz
 
 # Set Environmental variables
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM xterm
-ENV TZ Australia/Sydney
+ENV TZ Australia/Melbourne
 
-# Set Env variables for Munki Report Config
-ENV DB_NAME munkireport
-ENV DB_USER admin
-ENV DB_PASS password
-ENV DB_SERVER sql.test.internal
-ENV MR_SITENAME MunkiReport
-ENV MR_TIMEZONE Australia/Sydney
-
-# Define proxy setting variables for Munki report
-# set this to mod1, mod2 or no depending upon your proxy server needs. See the Readme for more info.
-ENV proxy_required no
-ENV proxy_server proxy.example.com
-ENV proxy_uname proxyuser
-ENV proxy_pword proxypassword
-ENV proxy_port 8080
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_HOME /tmp
 
 # Install base packages for MR
 RUN apt-get update && \
+	apt-get -y install \
+	apt-transport-https \
+	lsb-release \
+	ca-certificates \
+	wget && \
+	wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
+	echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list && \
+	apt-get update && \
 	apt-get -y install \
 	nginx \
 	nano \
 	curl \
 	vim \
 	git \
-	zip \ 
+	zip \
 	unzip \
-	php7.0 \
-	php7.0-mbstring \
-	php7.0-zip \
-	php7.0-fpm \
-	php7.0-mysql \
-	php7.0-ldap \
-	php7.0-xml \
+	php-pear \
+	libmcrypt-dev \
+	libreadline-dev \
+	php7.2 \
+	php7.2-dev \
+	php7.2-cli \
+	php7.2-common \
+	php7.2-curl \
+	php7.2-fpm \
+	php7.2-gd \
+	php7.2-json \
+	php7.2-ldap \
+	php7.2-mbstring \
+	php7.2-mysql \
+	php7.2-opcache \
+	php7.2-readline \
+	php7.2-soap \
+	php7.2-xml \
+	php7.2-zip \
+	libcurl4-openssl-dev \
+	zlib1g-dev \
+	libxml2-dev \
 	libcurl3-dev && \
 	curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
+
+RUN pecl channel-update pecl.php.net && \
+	pecl install mcrypt-1.0.1
 
 # Make folder for enabled sites in nginx
 # Add line to php config to prevent blank page, fix PHP CGI pathinfo
