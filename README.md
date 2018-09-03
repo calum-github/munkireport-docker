@@ -5,7 +5,9 @@ This Docker image runs [MunkiReport PHP](https://github.com/munkireport/munkirep
 
 The Docker image is built on Debian:Stretch for the newer versions
 
-It uses Nginx and php7-fpm
+It uses Nginx and php7.2-fpm
+
+* MySQL 5.7.7 or above is required if you are going to use MySQL for the DB backend
 
 * Branches / versions
 
@@ -32,6 +34,8 @@ There are multiple branches for each version, ensure you check out the tags for 
 # Settings
 
 Modify the /var/www/config.php as per your needs
+You can provide a config.php from the host to the container by passing a volume flag in docker
+``` -v /mr_config/config.php:/www/munkireport/config.php```
 
 # Running the container
 
