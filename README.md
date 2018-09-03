@@ -37,6 +37,18 @@ Modify the /var/www/config.php as per your needs
 You can provide a config.php from the host to the container by passing a volume flag in docker
 ``` -v /mr_config/config.php:/www/munkireport/config.php```
 
+# Passing variables to the container
+You will likely need to pass variables to the container, such as db connection information
+this can be done by passing ENV variables when starting the container
+eg
+``` -e CONNECTION_DRIVER=mysql ```
+
+You can then use this variable from the config.php with a line like this
+```$conf['connection']['drive'] = getenv_default('CONNECTION_DRIVER', 'sqlite');```
+
+This will then use the value that is provided via the -e command, or if this is not provided it will
+use a default value, which in this case is `sqlite`
+
 # Running the container
 
 Running the container is quite simple.
